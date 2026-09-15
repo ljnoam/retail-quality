@@ -1,0 +1,2 @@
+rate_date,quote_currency,base_currency,usd_per_eur,observation_status,series_key,source_url
+2024-01-05,USD,EUR,1.20000000,A,EXR.D.USD.EUR.SP00.A,https://example.test/artificial-ecb-fixture

@@ -1,0 +1,8 @@
+order_id,order_item_id,product_id,sale_date_utc,order_status,item_status,order_disposition,sale_price,product_category
+1,1,11,2024-01-06,Shipped,Shipped,CANDIDATE_CA,12.00,Tops
+2,2,12,2024-01-06,Complete,Complete,CANDIDATE_CA,-5.00,Shoes
+3,3,13,2024-01-06,Cancelled,Cancelled,EXCLUE_METIER,8.00,Bags
+4,4,14,2024-01-06,Processing,Processing,A_VERIFIER_ETAT,7.00,Shirts
+5,5,15,2024-01-13,Complete,Complete,CANDIDATE_CA,10.00,Shirts
+6,6,16,2024-01-06,Complete,Complete,CANDIDATE_CA,9.00,Accessories
+7,6,17,2024-01-06,Complete,Complete,CANDIDATE_CA,4.00,Accessories
