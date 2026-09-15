@@ -1,0 +1,23 @@
+{
+  "query_file": "sql/bigquery_sales.sql",
+  "period_start_inclusive": "2024-01-01",
+  "period_end_exclusive": "2024-02-01",
+  "result_rows": 2131,
+  "period_source_rows": 2131,
+  "duplicate_line_ids": 0,
+  "validation": "PASSED",
+  "job": {
+    "job_id": "4fb47302-bc09-449f-b2aa-6cbfe12d0e5c",
+    "project": "ljnoam-retail-quality-2026",
+    "location": "US",
+    "state": "DONE",
+    "created": "2026-09-15T22:55:07.011000+00:00",
+    "started": "2026-09-15T22:55:07.559000+00:00",
+    "ended": "2026-09-15T22:55:07.902000+00:00",
+    "total_bytes_processed": 12003113,
+    "total_bytes_billed": 31457280,
+    "slot_millis": 69,
+    "cache_hit": false,
+    "statement_type": "SELECT"
+  }
+}

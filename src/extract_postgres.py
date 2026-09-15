@@ -18,7 +18,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--start", required=True)
     parser.add_argument("--end", required=True)
-    parser.add_argument("--output", type=Path, default=Path("data/raw/ecb_rates.csv"))
+    parser.add_argument("--output", type=Path, default=Path("data/frozen/ecb_rates.csv"))
     parser.add_argument("--evidence", type=Path, default=Path("evidence/mesures_des_requetes/postgres_job.json"))
     args = parser.parse_args()
     start, end = date.fromisoformat(args.start), date.fromisoformat(args.end)
@@ -39,7 +39,7 @@ def main() -> None:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     columns = ["rate_date", "quote_currency", "base_currency", "usd_per_eur", "observation_status", "series_key", "source_url"]
     with args.output.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         writer.writerows(result)
     args.evidence.parent.mkdir(parents=True, exist_ok=True)
@@ -52,7 +52,7 @@ def main() -> None:
     excerpt = Path("evidence/extraits_des_resultats_sql/postgres_rates.csv")
     excerpt.parent.mkdir(parents=True, exist_ok=True)
     with excerpt.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         writer.writerows(result[:10])
     print(f"PostgreSQL: {len(result)} rows; output {args.output}; evidence {args.evidence}")

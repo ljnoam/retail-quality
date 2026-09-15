@@ -1,0 +1,467 @@
+{
+  "tables": {
+    "orders": {
+      "table_id": "bigquery-public-data:thelook_ecommerce.orders",
+      "num_rows_metadata": 125093,
+      "num_bytes_metadata": 6756554,
+      "modified": "2026-09-15 08:46:28.167000+00:00",
+      "time_partitioning": null,
+      "range_partitioning": null,
+      "clustering_fields": null,
+      "schema": [
+        {
+          "name": "order_id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "gender",
+          "type": "STRING",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "returned_at",
+          "type": "TIMESTAMP",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "shipped_at",
+          "type": "TIMESTAMP",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "delivered_at",
+          "type": "TIMESTAMP",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "num_of_item",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        }
+      ]
+    },
+    "order_items": {
+      "table_id": "bigquery-public-data:thelook_ecommerce.order_items",
+      "num_rows_metadata": 181614,
+      "num_bytes_metadata": 13621741,
+      "modified": "2026-09-15 08:46:31.524000+00:00",
+      "time_partitioning": null,
+      "range_partitioning": null,
+      "clustering_fields": null,
+      "schema": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "order_id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "product_id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "inventory_item_id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "shipped_at",
+          "type": "TIMESTAMP",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "delivered_at",
+          "type": "TIMESTAMP",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "returned_at",
+          "type": "TIMESTAMP",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "sale_price",
+          "type": "FLOAT",
+          "mode": "NULLABLE",
+          "description": null
+        }
+      ]
+    },
+    "products": {
+      "table_id": "bigquery-public-data:thelook_ecommerce.products",
+      "num_rows_metadata": 29120,
+      "num_bytes_metadata": 4285975,
+      "modified": "2026-09-15 08:46:25.236000+00:00",
+      "time_partitioning": null,
+      "range_partitioning": null,
+      "clustering_fields": null,
+      "schema": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "cost",
+          "type": "FLOAT",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "category",
+          "type": "STRING",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "name",
+          "type": "STRING",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "brand",
+          "type": "STRING",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "retail_price",
+          "type": "FLOAT",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "department",
+          "type": "STRING",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "sku",
+          "type": "STRING",
+          "mode": "NULLABLE",
+          "description": null
+        },
+        {
+          "name": "distribution_center_id",
+          "type": "INTEGER",
+          "mode": "NULLABLE",
+          "description": null
+        }
+      ]
+    }
+  },
+  "schema_columns": [
+    {
+      "table_name": "order_items",
+      "column_name": "id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "order_id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "user_id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "product_id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "inventory_item_id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "status",
+      "data_type": "STRING",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "created_at",
+      "data_type": "TIMESTAMP",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "shipped_at",
+      "data_type": "TIMESTAMP",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "delivered_at",
+      "data_type": "TIMESTAMP",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "returned_at",
+      "data_type": "TIMESTAMP",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "sale_price",
+      "data_type": "FLOAT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "order_id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "user_id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "status",
+      "data_type": "STRING",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "gender",
+      "data_type": "STRING",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "created_at",
+      "data_type": "TIMESTAMP",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "returned_at",
+      "data_type": "TIMESTAMP",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "shipped_at",
+      "data_type": "TIMESTAMP",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "delivered_at",
+      "data_type": "TIMESTAMP",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "num_of_item",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "cost",
+      "data_type": "FLOAT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "category",
+      "data_type": "STRING",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "name",
+      "data_type": "STRING",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "brand",
+      "data_type": "STRING",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "retail_price",
+      "data_type": "FLOAT64",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "department",
+      "data_type": "STRING",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "sku",
+      "data_type": "STRING",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "products",
+      "column_name": "distribution_center_id",
+      "data_type": "INT64",
+      "is_nullable": "YES"
+    }
+  ],
+  "schema_job": {
+    "job_id": "3b272999-58e6-499c-a86b-ea543a33b8ec",
+    "project": "ljnoam-retail-quality-2026",
+    "location": "US",
+    "state": "DONE",
+    "created": "2026-09-15T22:55:54.666000+00:00",
+    "started": "2026-09-15T22:55:54.839000+00:00",
+    "ended": "2026-09-15T22:55:55.119000+00:00",
+    "total_bytes_processed": 10485760,
+    "total_bytes_billed": 10485760,
+    "slot_millis": 75,
+    "cache_hit": false,
+    "statement_type": "SELECT"
+  },
+  "period_diagnostics": [
+    {
+      "source_table": "orders",
+      "first_date": "2019-01-05",
+      "last_date": "2026-09-15",
+      "row_count": 125093,
+      "rows_in_candidate_period": 1465
+    },
+    {
+      "source_table": "order_items",
+      "first_date": "2019-01-05",
+      "last_date": "2026-09-19",
+      "row_count": 181614,
+      "rows_in_candidate_period": 2131
+    }
+  ],
+  "period_job": {
+    "job_id": "e1e8698d-6f49-4ab4-9144-442cf569bcca",
+    "project": "ljnoam-retail-quality-2026",
+    "location": "US",
+    "state": "DONE",
+    "created": "2026-09-15T22:55:55.893000+00:00",
+    "started": "2026-09-15T22:55:56.032000+00:00",
+    "ended": "2026-09-15T22:55:56.388000+00:00",
+    "total_bytes_processed": 2453656,
+    "total_bytes_billed": 20971520,
+    "slot_millis": 172,
+    "cache_hit": false,
+    "statement_type": "SELECT"
+  },
+  "status_diagnostics": [
+    {
+      "status": "Cancelled",
+      "orders_count": 197
+    },
+    {
+      "status": "Complete",
+      "orders_count": 387
+    },
+    {
+      "status": "Processing",
+      "orders_count": 309
+    },
+    {
+      "status": "Returned",
+      "orders_count": 152
+    },
+    {
+      "status": "Shipped",
+      "orders_count": 420
+    }
+  ],
+  "status_job": {
+    "job_id": "96fc4dc7-c65e-436c-ba9c-cd47d44a7594",
+    "project": "ljnoam-retail-quality-2026",
+    "location": "US",
+    "state": "DONE",
+    "created": "2026-09-15T22:55:57.286000+00:00",
+    "started": "2026-09-15T22:55:57.464000+00:00",
+    "ended": "2026-09-15T22:55:57.652000+00:00",
+    "total_bytes_processed": 2282859,
+    "total_bytes_billed": 10485760,
+    "slot_millis": 29,
+    "cache_hit": false,
+    "statement_type": "SELECT"
+  }
+}

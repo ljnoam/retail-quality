@@ -6,11 +6,11 @@ Le [cahier des charges](PRD.md) définit le périmètre. La série officielle BC
 
 ## État des preuves
 
-La réponse BCE pour janvier 2024 a été interrogée réellement le 16 septembre 2026. PostgreSQL 17.11 local a exécuté l’import et la requête C2 : 25 taux entre le 27 décembre 2023 et le 31 janvier 2024, avec extrait et plan `EXPLAIN ANALYZE` dans `evidence/`. Les schémas et la période commerciale TheLook doivent encore être vérifiés par une interrogation BigQuery. Aucune requête BigQuery n’est pour l’instant revendiquée comme exécutée.
+La réponse BCE et les tables publiques TheLook ont été interrogées réellement le 16 septembre 2026. PostgreSQL 17.11 local a exécuté l’import et la requête C2 : **25 taux** entre le 27 décembre 2023 et le 31 janvier 2024, avec extrait et plan `EXPLAIN ANALYZE`. BigQuery, avec le projet dédié `ljnoam-retail-quality-2026`, a vérifié les schémas et extrait **2 131 lignes de commande** du 1er au 31 janvier 2024 ; le job, ses volumes et les *dry runs* sont dans `evidence/`. Les CSV figés sans identifiant personnel sont dans `data/frozen/`. La conversion et le jeu final C3 restent à réaliser : aucune ligne n’est ici revendiquée comme vente fiable en euros.
 
 ## Reproduction C2
 
-Prévoir Python 3.10+, PostgreSQL 17 et un projet Google Cloud autorisé à lancer des jobs BigQuery sur le jeu public. Les dépendances sont figées dans [requirements.txt](requirements.txt). `docker-compose.yml` permet de démarrer PostgreSQL avec Docker si disponible ; le développement présent a utilisé PostgreSQL 17 local via Homebrew. Copier `.env.example` vers `.env` et fournir uniquement les paramètres locaux nécessaires, sans versionner `.env`.
+Prévoir Python 3.10+, PostgreSQL 17 et un projet Google Cloud autorisé à lancer des jobs BigQuery sur le jeu public. Les dépendances sont figées dans [requirements.txt](requirements.txt). `docker-compose.yml` permet de démarrer PostgreSQL avec Docker si disponible ; le développement présent a utilisé PostgreSQL 17 local via Homebrew. Copier `.env.example` vers `.env` et fournir uniquement les paramètres locaux nécessaires, sans versionner `.env`. Docker Compose lit `.env` automatiquement ; pour les scripts Python et `psql`, exporter les variables de `.env` dans le shell (`set -a; . ./.env; set +a`). Avec PostgreSQL Homebrew, définir `PGUSER` au rôle local utilisé lors de `createdb` ou laisser cette variable non définie.
 
 ```sh
 python3 -m venv .venv
@@ -28,16 +28,17 @@ curl -L --fail -o data/raw/ecb_2023-12-25_2024-01-31.csv 'https://data-api.ecb.e
 La partie BigQuery exige `gcloud auth application-default login`, un `GOOGLE_CLOUD_PROJECT` correspondant à un projet autorisé, et la localisation `US` du jeu public :
 
 ```sh
-export GOOGLE_CLOUD_PROJECT=ID_DU_PROJET
+export GOOGLE_CLOUD_PROJECT=ljnoam-retail-quality-2026
 export BIGQUERY_LOCATION=US
 .venv/bin/python src/extract_bigquery.py discover
 .venv/bin/python src/extract_bigquery.py compare
 .venv/bin/python src/extract_bigquery.py extract
 ```
 
-`discover` vérifie le schéma réel, les types, la disponibilité temporelle et les états ; `compare` lance deux *dry runs* et enregistre les octets estimés ; `extract` exécutera la requête finale et enregistrera ses métadonnées et un extrait. La fenêtre candidate [2024-01-01, 2024-02-01) ne sera retenue qu’après ce diagnostic. Les extractions complètes sont locales dans `data/raw/` et ignorées par Git ; les extraits consultables et les métadonnées sans données personnelles sont dans `evidence/`.
+`discover` vérifie le schéma réel, les types, la disponibilité temporelle et les états ; `compare` lance deux *dry runs* et enregistre les octets estimés ; `extract` exécutera la requête finale et enregistrera ses métadonnées et un extrait. La fenêtre candidate [2024-01-01, 2024-02-01) ne sera retenue qu’après ce diagnostic. Les extractions figées sont dans `data/frozen/` et versionnées pour un traitement hors connexion. Le CSV brut de l’API BCE, retéléchargeable et contrôlé par hash, reste dans `data/raw/` et n’est pas versionné. Les extraits consultables et les métadonnées des jobs sont dans `evidence/`.
+La fenêtre [2024-01-01, 2024-02-01) a été confirmée par les diagnostics. Après les deux extractions, `.venv/bin/python src/summarize_extractions.py` contrôle leurs volumes, dates, clés et SHA-256. Le jeu TheLook public peut évoluer ; les snapshots figés permettent de rejouer les étapes suivantes sur les mêmes lignes.
 
-Les choix de colonnes, filtres, conditions et jointures sont expliqués dans [les fiches SQL](docs/requetes-sql.md). Les hypothèses et limites figurent dans [les sources](docs/sources-et-hypotheses.md), et les mesures dans [les optimisations](docs/optimisations-et-mesures.md).
+Les choix de colonnes, filtres, conditions et jointures sont expliqués dans [les fiches SQL](docs/requetes-sql.md). Les hypothèses figurent dans [les sources](docs/sources-et-hypotheses.md), les chiffres observés et limites dans [les résultats](docs/resultats-et-limites.md), et les mesures dans [les optimisations](docs/optimisations-et-mesures.md).
 
 ## Sources
 

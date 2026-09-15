@@ -1,0 +1,11 @@
+order_id,order_item_id,product_id,sale_date_utc,order_status,item_status,order_disposition,sale_price,product_category
+104,140,10396,2024-01-22,Cancelled,Cancelled,EXCLUE_METIER,48.0,Intimates
+227,331,17683,2024-01-28,Complete,Complete,CANDIDATE_CA,99.94999694824217,Fashion Hoodies & Sweatshirts
+269,388,16581,2024-01-12,Returned,Returned,EXCLUE_METIER,39.5,Tops & Tees
+289,413,6382,2024-01-30,Returned,Returned,EXCLUE_METIER,16.5,Shorts
+289,414,1411,2024-01-26,Returned,Returned,EXCLUE_METIER,59.5,Sweaters
+571,806,21352,2024-01-22,Shipped,Shipped,CANDIDATE_CA,109.9499969482422,Jeans
+600,851,23779,2024-01-14,Processing,Processing,A_VERIFIER_ETAT,266.6600036621094,Outerwear & Coats
+606,857,14035,2024-01-02,Complete,Complete,CANDIDATE_CA,39.9900016784668,Accessories
+655,923,10856,2024-01-24,Processing,Processing,A_VERIFIER_ETAT,30.0,Intimates
+816,1142,18625,2024-01-05,Complete,Complete,CANDIDATE_CA,68.9000015258789,Active

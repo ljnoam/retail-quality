@@ -1,0 +1,13 @@
+{
+  "test": "second import from the same official ECB CSV snapshot",
+  "command": ".venv/bin/python src/import_ecb.py --start 2023-12-25 --end 2024-02-01 --csv data/raw/ecb_2023-12-25_2024-01-31.csv",
+  "first_import_observations": 25,
+  "second_import_observations": 25,
+  "database_row_count_after_second_import": 25,
+  "frozen_rates_sha256_before_second_import_crlf": "feb1e92124ecd02782bc0e4bd81545e71d81ee68fc0c4e139c35016ff1af9687",
+  "frozen_rates_sha256_after_second_import_crlf": "feb1e92124ecd02782bc0e4bd81545e71d81ee68fc0c4e139c35016ff1af9687",
+  "second_extract_command": ".venv/bin/python src/extract_postgres.py --start 2024-01-01 --end 2024-02-01 --output /private/tmp/retail_quality_postgres_second.csv --evidence /private/tmp/retail_quality_postgres_second_job.json",
+  "normalized_frozen_rates_sha256_lf": "ca0fcb3a696945c7e7dd5fc1610e6d608be94dfe9907f4ab9e1c009b828b8c02",
+  "second_extract_sha256_lf": "ca0fcb3a696945c7e7dd5fc1610e6d608be94dfe9907f4ab9e1c009b828b8c02",
+  "scope": "checks repeat import does not duplicate the rate table and a second extraction gives byte-identical rate rows"
+}

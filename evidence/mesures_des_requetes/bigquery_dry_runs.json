@@ -1,0 +1,30 @@
+{
+  "baseline": {
+    "job_id": null,
+    "project": "ljnoam-retail-quality-2026",
+    "location": "US",
+    "state": "DONE",
+    "created": "2026-09-15T22:54:49.708000+00:00",
+    "started": null,
+    "ended": "2026-09-15T22:54:49.921000+00:00",
+    "total_bytes_processed": 24664270,
+    "total_bytes_billed": 0,
+    "slot_millis": null,
+    "cache_hit": false,
+    "statement_type": "SELECT"
+  },
+  "final": {
+    "job_id": null,
+    "project": "ljnoam-retail-quality-2026",
+    "location": "US",
+    "state": "DONE",
+    "created": "2026-09-15T22:54:50.156000+00:00",
+    "started": null,
+    "ended": "2026-09-15T22:54:50.404000+00:00",
+    "total_bytes_processed": 12003113,
+    "total_bytes_billed": 0,
+    "slot_millis": null,
+    "cache_hit": false,
+    "statement_type": "SELECT"
+  }
+}

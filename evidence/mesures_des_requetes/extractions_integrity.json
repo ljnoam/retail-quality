@@ -1,0 +1,35 @@
+{
+  "sales": {
+    "file": "data/frozen/thelook_sales.csv",
+    "sha256": "e5310b028b04a7c0c0c8bf783a9a90628dc955ccd07c6ef6d074a94923a32e8a",
+    "row_count": 2131,
+    "first_date": "2024-01-01",
+    "last_date": "2024-01-31",
+    "duplicate_key_count": 0,
+    "order_disposition_counts": {
+      "A_VERIFIER_ETAT": 450,
+      "CANDIDATE_CA": 1167,
+      "EXCLUE_METIER": 514
+    },
+    "order_status_counts": {
+      "Cancelled": 280,
+      "Complete": 571,
+      "Processing": 450,
+      "Returned": 234,
+      "Shipped": 596
+    },
+    "missing_order_status_count": 0,
+    "missing_product_category_count": 0
+  },
+  "rates": {
+    "file": "data/frozen/ecb_rates.csv",
+    "sha256": "ca0fcb3a696945c7e7dd5fc1610e6d608be94dfe9907f4ab9e1c009b828b8c02",
+    "row_count": 25,
+    "first_date": "2023-12-27",
+    "last_date": "2024-01-31",
+    "duplicate_key_count": 0,
+    "currency_pairs": {
+      "USD/EUR": 25
+    }
+  }
+}

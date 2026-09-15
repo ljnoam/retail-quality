@@ -2,7 +2,7 @@
 
 ## BigQuery — `sql/bigquery_sales.sql`
 
-**Objectif de collecte.** Une ligne par ligne de commande candidate dans une période historique fixe, avec les attributs indispensables au contrôle et au rapprochement des taux. Cette requête est écrite mais n’est pas encore revendiquée comme exécutée ; son schéma doit être confirmé par le job de découverte.
+**Objectif de collecte.** Une ligne par ligne de commande dans une période historique fixe, avec les attributs indispensables au contrôle et au rapprochement des taux. Le schéma a été confirmé et la requête exécutée sur BigQuery.
 
 **Tables et grain.** `order_items` est la table motrice et donne le grain `oi.id`. `orders` apporte l’état de la commande et `products` la catégorie. Les jointures `LEFT JOIN orders ON o.order_id = oi.order_id` et `LEFT JOIN products ON p.id = oi.product_id` conservent les lignes orphelines pour les signaler au contrôle qualité. Ces clés sont les références métier attendues ; leur unicité réelle doit être vérifiée sur les données interrogées. Une ligne de commande dont la référence produit est absente n’est pas écartée silencieusement.
 
@@ -10,9 +10,9 @@
 
 **Filtre et condition.** La condition `oi.created_at >= 2024-01-01 00:00 UTC AND oi.created_at < 2024-02-01 00:00 UTC` définit un mois fixe sans ambiguïté de borne. Aucun état n’est supprimé dans le `WHERE` : les lignes annulées doivent être comptées séparément et les états inattendus doivent rester visibles. Les lignes volontairement exclues de l’extraction sont uniquement celles hors période ; les champs clients sont volontairement non projetés. Le `CASE` constitue une décision provisoire à confronter aux états observés par `sql/bigquery_statuses.sql`.
 
-**Forme du résultat.** CSV trié par `oi.id`, huit colonnes utiles plus disposition, un enregistrement par ligne commerciale si les clés de dimension sont uniques. Le nombre réel de lignes, l’extrait et le job seront enregistrés après exécution. `sql/bigquery_sales_baseline.sql` ne sert qu’à un *dry run* de comparaison de projection ; ses champs personnels ne sont jamais extraits.
+**Forme du résultat et exécution réelle.** CSV trié par `oi.id`, neuf colonnes utiles, **2 131 lignes** pour 2 131 lignes source dans la période, aucun doublon de `order_item_id`. Le job `4fb47302-bc09-449f-b2aa-6cbfe12d0e5c` a traité 12 003 113 octets et indiqué 31 457 280 **octets facturables** dans ses métadonnées, avec `cache_hit=false` ; cela ne prouve pas un paiement effectif dans le Sandbox. Le snapshot est dans `data/frozen/thelook_sales.csv`, l’extrait dans `evidence/extraits_des_resultats_sql/bigquery_sales.csv`, les métadonnées dans `evidence/mesures_des_requetes/bigquery_sales_job.json`. Les 2 131 lignes se répartissent en 1 167 candidates au CA, 514 exclues par la règle métier provisoire et 450 à vérifier pour l’état `Processing`. Ces classifications d’extraction ne sont pas des lignes C3 acceptées. `sql/bigquery_sales_baseline.sql` ne sert qu’à un *dry run* de comparaison de projection ; ses champs personnels ne sont jamais extraits.
 
-**Reproduction.** Avec Application Default Credentials et `GOOGLE_CLOUD_PROJECT`, exécuter successivement `python src/extract_bigquery.py discover`, `compare`, puis `extract`. Les commandes complètes sont dans le README.
+**Reproduction.** Avec Application Default Credentials et `GOOGLE_CLOUD_PROJECT=ljnoam-retail-quality-2026` (ou un autre projet de jobs autorisé), exécuter successivement `python src/extract_bigquery.py discover`, `compare`, puis `extract`. Les commandes complètes sont dans le README. Le jeu public peut évoluer ; pour rejouer exactement les mêmes lignes hors connexion, utiliser le CSV figé et son SHA-256 dans `evidence/mesures_des_requetes/extractions_integrity.json`.
 
 ## PostgreSQL — `sql/postgres_rates.sql`
 

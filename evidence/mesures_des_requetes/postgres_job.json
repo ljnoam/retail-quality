@@ -7,7 +7,7 @@
   "result_rows": 25,
   "first_date": "2023-12-27",
   "last_date": "2024-01-31",
-  "client_fetch_duration_ms": 2.103,
+  "client_fetch_duration_ms": 2.116,
   "explain_analyze": {
     "Plan": {
       "Node Type": "Sort",
@@ -17,8 +17,8 @@
       "Total Cost": 16.37,
       "Plan Rows": 1,
       "Plan Width": 152,
-      "Actual Startup Time": 0.012,
-      "Actual Total Time": 0.013,
+      "Actual Startup Time": 0.014,
+      "Actual Total Time": 0.015,
       "Actual Rows": 25,
       "Actual Loops": 1,
       "Sort Key": [
@@ -48,8 +48,8 @@
           "Total Cost": 16.35,
           "Plan Rows": 1,
           "Plan Width": 152,
-          "Actual Startup Time": 0.006,
-          "Actual Total Time": 0.009,
+          "Actual Startup Time": 0.007,
+          "Actual Total Time": 0.011,
           "Actual Rows": 25,
           "Actual Loops": 1,
           "Inner Unique": false,
@@ -78,7 +78,7 @@
               "Plan Rows": 1,
               "Plan Width": 128,
               "Actual Startup Time": 0.001,
-              "Actual Total Time": 0.001,
+              "Actual Total Time": 0.002,
               "Actual Rows": 1,
               "Actual Loops": 1,
               "Index Cond": "(series_key = 'EXR.D.USD.EUR.SP00.A'::text)",
@@ -107,8 +107,8 @@
               "Total Cost": 8.17,
               "Plan Rows": 1,
               "Plan Width": 88,
-              "Actual Startup Time": 0.004,
-              "Actual Total Time": 0.006,
+              "Actual Startup Time": 0.005,
+              "Actual Total Time": 0.007,
               "Actual Rows": 25,
               "Actual Loops": 1,
               "Index Cond": "((source_id = s.source_id) AND (rate_date >= '2023-12-25 00:00:00'::timestamp without time zone) AND (rate_date < '2024-02-01'::date))",
@@ -141,8 +141,8 @@
       "Temp Read Blocks": 0,
       "Temp Written Blocks": 0
     },
-    "Planning Time": 0.042,
+    "Planning Time": 0.052,
     "Triggers": [],
-    "Execution Time": 0.019
+    "Execution Time": 0.022
   }
 }
