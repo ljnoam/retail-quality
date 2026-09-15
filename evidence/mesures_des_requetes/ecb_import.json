@@ -1,0 +1,12 @@
+{
+  "source_url": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=2023-12-25&endPeriod=2024-01-31&format=csvdata",
+  "input_csv": "data/raw/ecb_2023-12-25_2024-01-31.csv",
+  "input_sha256": "5bc83840a36ad12653400072e504a8b178f9a81e6fb1c0909888975edc311ac5",
+  "series_key": "EXR.D.USD.EUR.SP00.A",
+  "period_start_inclusive": "2023-12-25",
+  "period_end_exclusive": "2024-02-01",
+  "observations_imported": 25,
+  "first_observation": "2023-12-27",
+  "last_observation": "2024-01-31",
+  "unit": "USD per 1 EUR"
+}

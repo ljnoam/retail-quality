@@ -1,0 +1,11 @@
+rate_date,quote_currency,base_currency,usd_per_eur,observation_status,series_key,source_url
+2023-12-27,USD,EUR,1.10650000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2023-12-28,USD,EUR,1.11140000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2023-12-29,USD,EUR,1.10500000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2024-01-02,USD,EUR,1.09560000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2024-01-03,USD,EUR,1.09190000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2024-01-04,USD,EUR,1.09530000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2024-01-05,USD,EUR,1.09210000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2024-01-08,USD,EUR,1.09460000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2024-01-09,USD,EUR,1.09400000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
+2024-01-10,USD,EUR,1.09460000,A,EXR.D.USD.EUR.SP00.A,https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A
