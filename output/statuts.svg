@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300">
+<rect width="760" height="300" fill="#ffffff"/>
+<text x="24" y="28" font-family="Arial" font-size="18" fill="#1b2633">Statuts des lignes extraites</text>
+<text x="24" y="75" font-family="Arial" font-size="14" fill="#1b2633">ACCEPTÉE</text>
+<rect x="245" y="58" width="390" height="26" fill="#177245"/>
+<text x="650" y="76" font-family="Arial" font-size="14" fill="#1b2633">1167</text>
+<text x="24" y="133" font-family="Arial" font-size="14" fill="#1b2633">REJETÉE</text>
+<rect x="245" y="116" width="0" height="26" fill="#b42318"/>
+<text x="260" y="134" font-family="Arial" font-size="14" fill="#1b2633">0</text>
+<text x="24" y="191" font-family="Arial" font-size="14" fill="#1b2633">À VÉRIFIER</text>
+<rect x="245" y="174" width="150" height="26" fill="#b76e00"/>
+<text x="410" y="192" font-family="Arial" font-size="14" fill="#1b2633">450</text>
+<text x="24" y="249" font-family="Arial" font-size="14" fill="#1b2633">EXCLUE PAR RÈGLE MÉTIER</text>
+<rect x="245" y="232" width="172" height="26" fill="#52657a"/>
+<text x="432" y="250" font-family="Arial" font-size="14" fill="#1b2633">514</text>
+</svg>

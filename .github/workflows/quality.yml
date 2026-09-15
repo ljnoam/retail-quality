@@ -1,0 +1,35 @@
+name: Retail Quality C2/C3 verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile source and tests
+        run: python -m compileall -q src tests
+      - name: Run rule, integration, end-to-end and idempotence tests
+        run: python -m unittest discover -s tests -v
+      - name: Rebuild from the frozen public extractions
+        run: python src/build_dataset.py
+      - name: Independently verify output files
+        run: python src/verify_outputs.py
+      - name: Confirm committed outputs are reproducible
+        run: git diff --exit-code -- output evidence/rapport_de_tests/c3_output_verification.json

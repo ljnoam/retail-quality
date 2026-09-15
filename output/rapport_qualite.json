@@ -1,0 +1,42 @@
+{
+  "input_sales_rows": 2131,
+  "status_counts": {
+    "ACCEPTÉE": 1167,
+    "REJETÉE": 0,
+    "À VÉRIFIER": 450,
+    "EXCLUE PAR RÈGLE MÉTIER": 514
+  },
+  "reason_counts": {
+    "CANCELLED_ORDER": 280,
+    "PROCESSING_ORDER": 450,
+    "RETURNED_ORDER": 234
+  },
+  "final_rows": 1167,
+  "quarantine_rows": 964,
+  "accounted_rows": 2131,
+  "accepted_amount_eur_sum": "67052.70",
+  "data_origin": "frozen public TheLook BigQuery and ECB PostgreSQL extractions",
+  "fixtures_applied": false,
+  "sales_input": "data/frozen/thelook_sales.csv",
+  "sales_input_sha256": "e5310b028b04a7c0c0c8bf783a9a90628dc955ccd07c6ef6d074a94923a32e8a",
+  "rates_input": "data/frozen/ecb_rates.csv",
+  "rates_input_sha256": "ca0fcb3a696945c7e7dd5fc1610e6d608be94dfe9907f4ab9e1c009b828b8c02",
+  "period_start_inclusive": "2024-01-01",
+  "period_end_exclusive": "2024-02-01",
+  "rate_max_age_calendar_days": 7,
+  "source_currency_assumption": "USD (POC assumption, unverified)",
+  "normalization_timezone": "UTC",
+  "money_rounding": "ROUND_HALF_UP to 0.01 source units, then 0.01 EUR per line",
+  "conversion_formula": "amount_eur = amount_source_usd / usd_per_eur",
+  "input_rate_rows": 25,
+  "usable_rate_rows": 25,
+  "rate_issue_counts": {},
+  "rate_issues": [],
+  "reason_explanations": {
+    "CANCELLED_ORDER": "Commande annulée : exclusion métier du chiffre d'affaires.",
+    "PROCESSING_ORDER": "Commande encore en traitement : chiffre d'affaires à vérifier.",
+    "RETURNED_ORDER": "Commande retournée : exclusion métier du chiffre d'affaires."
+  },
+  "volume_check": "PASSED",
+  "final_key_uniqueness_check": "PASSED"
+}

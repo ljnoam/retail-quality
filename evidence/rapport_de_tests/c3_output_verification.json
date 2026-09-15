@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "input_hashes": "PASSED",
+    "volume_conservation": "PASSED",
+    "source_line_partition": "PASSED",
+    "final_key_uniqueness": "PASSED",
+    "positive_money_and_rates": "PASSED",
+    "rate_age_0_to_7_days": "PASSED",
+    "eur_conversion": "PASSED",
+    "reason_traceability": "PASSED",
+    "fixture_separation": "PASSED"
+  },
+  "input_sales_rows": 2131,
+  "input_rate_rows": 25,
+  "status_counts": {
+    "ACCEPTÉE": 1167,
+    "REJETÉE": 0,
+    "À VÉRIFIER": 450,
+    "EXCLUE PAR RÈGLE MÉTIER": 514
+  },
+  "accepted_amount_eur_sum": "67052.70",
+  "output_sha256": {
+    "ventes_fiables.csv": "af917b3cfd4a3d5931bd4444a540049e784276a5c1ac9b95d560f0e7d251c728",
+    "quarantaine.csv": "08b1bffe43788523e4d2d20603646c22ebd9a7d0eab448a9a31b0acea91ef495",
+    "rapport_qualite.json": "28ae7d32d1b2f248c9b7c427425229932070e355eecb041fb1a19180411a5093",
+    "statuts.svg": "e681327b25f70e3b02662165c94134255f397d6e42398355df9a5a8cf146ea9d"
+  }
+}
