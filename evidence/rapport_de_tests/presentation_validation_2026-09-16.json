@@ -1,6 +1,6 @@
 {
-  "file": "presentation/retail-quality-soutenance-rncp-c2-c3-final.pptx",
-  "sha256": "3a80fafdb392fcf137ec378b9fc090bb3332b5c8b037bd31450aba07eba34df4",
+  "file": "presentation/retail-quality-soutenance-rncp-c2-c3-corrige.pptx",
+  "sha256": "e89ecf5e00e7828ed932aa0582b55ce132f501a45bfc68b6dc600b537a8c49ec",
   "slide_count": 12,
   "speaker_notes_count": 12,
   "native_table_count": 6,
@@ -14,10 +14,10 @@
     "slides_reviewed": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "status": "PASSED",
     "repairs_applied": [
-      "Removed ambiguous arrowheads from the architecture connectors.",
-      "Repositioned the PostgreSQL SQL label and code block.",
-      "Displayed BigQuery dry-run volumes in millions of bytes.",
-      "Shortened a long slide title and consolidated footer pagination."
+      "Added top margin to the titles, including slides 5, 8, 10 and 12.",
+      "Replaced the cover disclaimer with the public-substitution confidentiality statement.",
+      "Explained the 30 MiB BigQuery minimum behind bytes billed on slide 6.",
+      "Distinguished zero observed quality rejects from anomaly detection proven by isolated test fixtures."
     ]
   },
   "content_source": "Only versioned SQL evidence, output/rapport_qualite.json, output CSV files, test reports and GitHub verification from this repository.",

@@ -58,7 +58,7 @@ Les choix de colonnes, filtres, conditions et jointures sont expliqués dans [le
 
 ## Audit RNCP et soutenance
 
-L’audit daté du 16 septembre 2026 a reconstruit le pipeline, exécuté le vérificateur indépendant et relancé les 34 tests. Son relevé se trouve dans [rncp_audit_2026-09-16.json](evidence/rapport_de_tests/rncp_audit_2026-09-16.json). Le [PowerPoint final](presentation/retail-quality-soutenance-rncp-c2-c3-final.pptx) contient 12 slides, des tableaux et graphiques éditables, ainsi que des notes d’oral sur chaque slide. Sa preuve de validation et de revue visuelle figure dans [presentation_validation_2026-09-16.json](evidence/rapport_de_tests/presentation_validation_2026-09-16.json).
+L’audit daté du 16 septembre 2026 a reconstruit le pipeline, exécuté le vérificateur indépendant et relancé les 34 tests. Son relevé se trouve dans [rncp_audit_2026-09-16.json](evidence/rapport_de_tests/rncp_audit_2026-09-16.json). Le [PowerPoint final corrigé](presentation/retail-quality-soutenance-rncp-c2-c3-corrige.pptx) contient 12 slides, des tableaux et graphiques éditables, ainsi que des notes d’oral sur chaque slide. Le [support oral détaillé](docs/support-oral-soutenance.md) fournit le discours, les compétences et les extraits de code concrets pour chaque slide. La preuve de validation et de revue visuelle figure dans [presentation_validation_2026-09-16.json](evidence/rapport_de_tests/presentation_validation_2026-09-16.json).
 
 ## Sources
 

@@ -6,7 +6,7 @@ import { Presentation, PresentationFile } from "@oai/artifact-tool";
 const workspaceDir = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const SKILL_DIR = "/Users/noamleclapart-jublot/.codex/plugins/cache/openai-primary-runtime/presentations/26.909.12148/skills/presentations";
 const RUNTIME_PYTHON = "/Users/noamleclapart-jublot/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3";
-const FINAL_PPTX = path.join(workspaceDir, "presentation", "retail-quality-soutenance-rncp-c2-c3-final.pptx");
+const FINAL_PPTX = path.join(workspaceDir, "presentation", "retail-quality-soutenance-rncp-c2-c3-corrige.pptx");
 const stagingDir = path.join(workspaceDir, ".codex-finalizer");
 
 const { applyPresentationChartFont, finalizePresentation } = await import(
@@ -80,10 +80,10 @@ function addRule(slide, x, y, w, color = C.line, height = 2) {
 
 function addTitle(slide, number, title, subtitle = "") {
   slide.background.fill = C.paper;
-  addText(slide, String(number).padStart(2, "0"), 58, 34, 58, 34, { fontSize: 16, bold: true, color: C.orange });
-  addText(slide, title, 112, 28, 1088, 62, { fontSize: 34, bold: true, color: C.ink, verticalAlignment: "middle" });
-  addRule(slide, 64, 100, 1152, C.line, 1);
-  if (subtitle) addText(slide, subtitle, 72, 106, 1120, 38, { fontSize: 16, color: C.muted });
+  addText(slide, String(number).padStart(2, "0"), 58, 42, 58, 34, { fontSize: 16, bold: true, color: C.orange });
+  addText(slide, title, 112, 36, 1088, 62, { fontSize: 34, bold: true, color: C.ink, verticalAlignment: "middle" });
+  addRule(slide, 64, 108, 1152, C.line, 1);
+  if (subtitle) addText(slide, subtitle, 72, 114, 1120, 34, { fontSize: 16, color: C.muted });
 }
 
 function addFooter(slide, source, n) {
@@ -124,12 +124,12 @@ function styleTable(table, rows, columns, options = {}) {
   addText(s, "Fiabiliser des ventes avant le reporting financier", 72, 150, 1010, 158, { fontSize: 50, bold: true, color: "#FFFFFF", verticalAlignment: "middle" });
   addText(s, "POC exécutable pour RNCP BC01 C2 et C3", 76, 326, 850, 48, { fontSize: 24, color: "#D8E6EC" });
   addRule(s, 76, 404, 180, C.orange, 6);
-  addText(s, "TheLook est une boutique fictive publique utilisée comme substitution.\nAucune donnée interne, aucun déploiement et aucun usage chez Thales.", 76, 440, 980, 100, { fontSize: 22, color: "#F5EDE5" });
+  addText(s, "Données publiques de substitution utilisées afin de préserver\nla confidentialité des données d’entreprise.", 76, 440, 980, 100, { fontSize: 22, color: "#F5EDE5" });
   addText(s, "Noam Leclapart-Jublot  |  Soutenance du 19 septembre 2026", 76, 635, 1080, 32, { fontSize: 16, color: "#AFC4CF" });
   notes(s, [
     "Ouverture orale : je présente un prototype de contrôle de qualité avant calcul d'un montant en euros.",
     "Je précise immédiatement que TheLook est fictif et remplace des données d'entreprise afin d'éviter toute divulgation.",
-    "Je ne présente pas ce travail comme un outil déployé chez Thales. La preuve porte sur le code, les requêtes exécutées et les résultats versionnés.",
+    "La précision sur l'absence de déploiement apparaît dans les limites, en dernière slide. Ici, je garde l'ouverture centrée sur la confidentialité.",
   ]);
 }
 
@@ -269,13 +269,15 @@ function styleTable(table, rows, columns, options = {}) {
   addText(s, "BigQuery", 770, 166, 420, 30, { fontSize: 18, bold: true, color: C.orange });
   addText(s, "Job final", 770, 210, 160, 28, { fontSize: 16, color: C.muted });
   addText(s, "12 003 113 octets traités\n31 457 280 octets dans le champ facturable\n69 slot-ms, 343 ms de travail SQL", 770, 242, 420, 105, { fontSize: 19, color: C.ink });
-  addText(s, "PostgreSQL", 770, 382, 420, 30, { fontSize: 18, bold: true, color: C.orange });
-  addText(s, "Index couvrant utilisé\n4 blocs en cache, 0 bloc lu du disque\n0,022 ms d’exécution serveur", 770, 424, 420, 100, { fontSize: 19, color: C.ink });
+  addText(s, "Pourquoi plus d’octets facturables ? Trois tables sont référencées. Le minimum technique de 10 MiB par table donne 30 MiB, soit 31 457 280 octets.", 770, 338, 420, 58, { fontSize: 14, color: C.muted });
+  addText(s, "PostgreSQL", 770, 410, 420, 30, { fontSize: 18, bold: true, color: C.orange });
+  addText(s, "Index couvrant utilisé\n4 blocs en cache, 0 bloc lu du disque\n0,022 ms d’exécution serveur", 770, 446, 420, 92, { fontSize: 19, color: C.ink });
   addText(s, "Aucun gain de durée n’est revendiqué. Les tables BigQuery ne sont pas partitionnées selon les métadonnées relevées.", 770, 554, 420, 82, { fontSize: 16, color: C.red, bold: true });
   addFooter(s, "evidence/mesures_des_requetes/bigquery_dry_runs.json; postgres_job.json", 6);
   notes(s, [
     "La comparaison BigQuery conserve les mêmes jointures et le même filtre. Elle change surtout la projection des colonnes.",
     "Le dry run estime 24 664 270 octets pour la version large et 12 003 113 pour la version finale, soit 51,33 % de moins.",
+    "Les 31 457 280 octets facturables sont supérieurs aux 12 003 113 octets traités à cause de l'arrondi minimal de facturation par table. La requête référence trois tables et le minimum technique représente 10 485 760 octets par table, donc exactement 31 457 280 octets. Ce champ ne prouve pas qu'une somme a été payée, notamment avec le quota gratuit ou le Sandbox.",
     "Je parle d'octets estimés, pas d'un temps gagné. Les dry runs ne fournissent pas une comparaison de durée.",
     "PostgreSQL utilise l'index couvrant, mais 25 lignes restent trop peu pour attribuer un gain de temps fiable à l'index.",
   ]);
@@ -341,7 +343,7 @@ function styleTable(table, rows, columns, options = {}) {
   notes(s, [
     "Je distingue quatre statuts. REJETÉE signale une corruption. EXCLUE PAR RÈGLE MÉTIER décrit une donnée valide qui ne doit pas alimenter le montant.",
     "Le tableau montre la traçabilité : chaque décision non acceptée écrit un code stable et une phrase lisible dans la quarantaine.",
-    "Dans les données réellement extraites, aucun rejet qualité n'a été observé. Les cas négatifs viennent de fixtures clairement séparées.",
+    "Dans les données réellement extraites, aucun rejet qualité n'a été observé. Cela ne signifie pas que les contrôles ne fonctionnent pas : les fixtures artificielles et les tests négatifs déclenchent les rejets attendus sans modifier les résultats publics.",
     "Un taux invalide est retiré des candidats. La vente peut utiliser un taux antérieur encore admissible, sinon elle passe à vérifier.",
   ]);
 }
@@ -410,7 +412,7 @@ function styleTable(table, rows, columns, options = {}) {
     ["Taux âgé de plus de 7 jours", "0"],
   ] });
   styleTable(table, 4, 2, { fontSize: 15 });
-  addText(s, "0 rejet qualité observé dans l’extraction réelle", 664, 555, 510, 54, { fontSize: 21, bold: true, color: C.green, alignment: "center" });
+  addText(s, "0 rejet qualité observé dans l’extraction réelle\nLes fixtures séparées prouvent que les règles détectent les anomalies.", 650, 548, 540, 72, { fontSize: 18, bold: true, color: C.green, alignment: "center" });
   addFooter(s, "output/ventes_fiables.csv; output/quarantaine.csv; output/rapport_qualite.json", 10);
   notes(s, [
     "Je formule ce résultat comme une démonstration technique, pas comme un chiffre d'affaires d'entreprise.",
@@ -472,7 +474,7 @@ function styleTable(table, rows, columns, options = {}) {
 
 await fs.mkdir(stagingDir, { recursive: true });
 await fs.mkdir(path.dirname(FINAL_PPTX), { recursive: true });
-const candidatePath = path.join(stagingDir, "retail-quality-soutenance-candidate-final.pptx");
+const candidatePath = path.join(stagingDir, "retail-quality-soutenance-candidate-corrige.pptx");
 await (await PresentationFile.exportPptx(presentation)).save(candidatePath);
 
 const requirements = {
@@ -498,7 +500,7 @@ const result = await finalizePresentation({
   ],
   fontPolicy: { basis: "design", families: [FONT, MONO] },
   verifyArtifactToolImport: true,
-  receiptPath: path.join(stagingDir, "retail-quality-soutenance-final.validation.json"),
+  receiptPath: path.join(stagingDir, "retail-quality-soutenance-corrige.validation.json"),
 });
 
 console.log(JSON.stringify({ finalPath: FINAL_PPTX, slideCount: 12, validation: result }, null, 2));
