@@ -2,7 +2,7 @@
 
 Prototype de contrôle de ventes avant un calcul de chiffre d’affaires en euros, construit avec des données publiques de démonstration pour les compétences RNCP BC01 C2 et C3. Le besoin métier est envisagé ; ce dépôt ne constitue ni un déploiement ni une utilisation chez Thales.
 
-Le [cahier des charges](PRD.md) définit le périmètre. La série officielle BCE `EXR.D.USD.EUR.SP00.A` fournit des **USD pour 1 EUR**. La devise des prix `sale_price` de TheLook n’a pas encore été établie par une source officielle : le traitement comme USD sera une **hypothèse du POC**, à valider avant tout usage réel.
+Le [cahier des charges](PRD.md) définit le périmètre. La série officielle BCE `EXR.D.USD.EUR.SP00.A` fournit des **USD pour 1 EUR**. La devise des prix `sale_price` de TheLook n’a pas été établie par une source officielle : le traitement comme USD est une **hypothèse du POC**, à valider avant tout usage réel.
 
 ## État des preuves
 
@@ -54,11 +54,15 @@ Le livrable principal est [ventes_fiables.csv](output/ventes_fiables.csv). [quar
 
 Les anomalies artificielles sont uniquement dans `tests/fixtures/` et dans les tests de règles. Pour les exécuter comme démonstration séparée, utiliser `--sales tests/fixtures/sales_artificial.csv --rates tests/fixtures/rates_artificial.csv --output-dir /tmp/retail-quality-fixtures --fixture-mode` ; le rapport porte alors `fixtures_applied=true` et ne remplace jamais les résultats réels du dépôt. La CI [quality.yml](.github/workflows/quality.yml) lance les tests sur Python 3.13 et 3.14, reconstruit les sorties et vérifie qu’elles restent identiques aux fichiers versionnés.
 
-Les choix de colonnes, filtres, conditions et jointures sont expliqués dans [les fiches SQL](docs/requetes-sql.md). L’ordre du pipeline et chaque décision sont dans [les règles C3](docs/algorithme-et-regles-qualite.md). Les hypothèses figurent dans [les sources](docs/sources-et-hypotheses.md), les chiffres observés et limites dans [les résultats](docs/resultats-et-limites.md), et les mesures dans [les optimisations](docs/optimisations-et-mesures.md).
+Les choix de colonnes, filtres, conditions et jointures sont expliqués dans [les fiches SQL](docs/requetes-sql.md). L’ordre du pipeline et chaque décision sont dans [les règles C3](docs/algorithme-et-regles-qualite.md). Les hypothèses figurent dans [les sources](docs/sources-et-hypotheses.md), les chiffres observés et limites dans [les résultats](docs/resultats-et-limites.md), et les mesures dans [les optimisations](docs/optimisations-et-mesures.md). La [matrice de preuves RNCP](docs/matrice-preuves-rncp.md) relie chaque critère à ses fichiers, ses preuves d’exécution et sa slide de soutenance.
+
+## Audit RNCP et soutenance
+
+L’audit daté du 16 septembre 2026 a reconstruit le pipeline, exécuté le vérificateur indépendant et relancé les 34 tests. Son relevé se trouve dans [rncp_audit_2026-09-16.json](evidence/rapport_de_tests/rncp_audit_2026-09-16.json). Le [PowerPoint final](presentation/retail-quality-soutenance-rncp-c2-c3-final.pptx) contient 12 slides, des tableaux et graphiques éditables, ainsi que des notes d’oral sur chaque slide. Sa preuve de validation et de revue visuelle figure dans [presentation_validation_2026-09-16.json](evidence/rapport_de_tests/presentation_validation_2026-09-16.json).
 
 ## Sources
 
 - [TheLook dans BigQuery](https://console.cloud.google.com/marketplace/product/bigquery-public-data/thelook-ecommerce) : boutique fictive, tables commerciales publiques.
 - [API BCE et exemples](https://data.ecb.europa.eu/help/api/data-examples) : série quotidienne `EXR.D.USD.EUR.SP00.A`, `TIME_PERIOD` et `OBS_VALUE` dans l’export `csvdata`.
 
-Le code, les commandes de reproduction et les preuves d’exécution seront documentés au fil de la construction. Aucun nom, courriel ou adresse de client n’est extrait.
+Le code, les commandes de reproduction et les preuves d’exécution sont versionnés dans ce dépôt. Aucun nom, courriel ou adresse de client n’est extrait.

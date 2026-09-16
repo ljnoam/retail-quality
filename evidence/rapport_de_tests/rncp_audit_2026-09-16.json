@@ -1,0 +1,51 @@
+{
+  "audit_date": "2026-09-16",
+  "prd_scope": "BC01 C2 and C3",
+  "local_commands": [
+    "python3 src/build_dataset.py",
+    "python3 src/verify_outputs.py",
+    "python3 -m unittest discover -s tests -v"
+  ],
+  "local_result": {
+    "pipeline": "PASSED",
+    "independent_verifier": "PASSED",
+    "tests_run": 34,
+    "test_failures": 0,
+    "test_errors": 0
+  },
+  "volumes": {
+    "sales_input": 2131,
+    "rates_input": 25,
+    "accepted": 1167,
+    "rejected": 0,
+    "review": 450,
+    "business_excluded": 514,
+    "quarantine": 964,
+    "accounted": 2131
+  },
+  "reason_counts": {
+    "PROCESSING_ORDER": 450,
+    "CANCELLED_ORDER": 280,
+    "RETURNED_ORDER": 234
+  },
+  "accepted_amount_eur_sum": "67052.70",
+  "accepted_amount_limitation": "Conditional on the unverified POC assumption that TheLook sale_price values are USD.",
+  "output_sha256": {
+    "ventes_fiables.csv": "af917b3cfd4a3d5931bd4444a540049e784276a5c1ac9b95d560f0e7d251c728",
+    "quarantaine.csv": "08b1bffe43788523e4d2d20603646c22ebd9a7d0eab448a9a31b0acea91ef495",
+    "rapport_qualite.json": "28ae7d32d1b2f248c9b7c427425229932070e355eecb041fb1a19180411a5093",
+    "statuts.svg": "e681327b25f70e3b02662165c94134255f397d6e42398355df9a5a8cf146ea9d"
+  },
+  "github_verification_before_audit_commit": {
+    "repository": "https://github.com/ljnoam/retail-quality",
+    "visibility": "public",
+    "default_branch": "main",
+    "remote_head": "87cfbbd993ea110a0e205a7e80b74813ac9d757e",
+    "workflow_run": "https://github.com/ljnoam/retail-quality/actions/runs/35035852944",
+    "workflow_conclusion": "success"
+  },
+  "claims": {
+    "thelook": "Fictitious public substitute dataset.",
+    "company_use": "No deployment or use by Thales is claimed."
+  }
+}

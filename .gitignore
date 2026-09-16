@@ -5,3 +5,7 @@ __pycache__/
 .pytest_cache/
 data/raw/
 *.log
+/.build/
+/.codex-finalizer/
+/presentation/node_modules/
+/.chart-data-*/

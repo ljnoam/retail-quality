@@ -1,0 +1,30 @@
+{
+  "file": "presentation/retail-quality-soutenance-rncp-c2-c3-final.pptx",
+  "sha256": "3a80fafdb392fcf137ec378b9fc090bb3332b5c8b037bd31450aba07eba34df4",
+  "slide_count": 12,
+  "speaker_notes_count": 12,
+  "native_table_count": 6,
+  "native_chart_count": 3,
+  "native_chart_owner_slides": [6, 9, 10],
+  "artifact_tool_import": "PASSED",
+  "package_integrity": "PASSED",
+  "layout_geometry": "PASSED",
+  "approved_fonts": ["Helvetica", "Menlo"],
+  "visual_review": {
+    "slides_reviewed": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "status": "PASSED",
+    "repairs_applied": [
+      "Removed ambiguous arrowheads from the architecture connectors.",
+      "Repositioned the PostgreSQL SQL label and code block.",
+      "Displayed BigQuery dry-run volumes in millions of bytes.",
+      "Shortened a long slide title and consolidated footer pagination."
+    ]
+  },
+  "content_source": "Only versioned SQL evidence, output/rapport_qualite.json, output CSV files, test reports and GitHub verification from this repository.",
+  "limitations": [
+    "TheLook is a fictitious public substitute dataset.",
+    "The EUR amount is conditional on the unverified POC assumption that sale_price is USD.",
+    "No deployment or use by Thales is claimed.",
+    "The deck was structurally imported and rendered by the artifact runtime; it was not opened in native Microsoft PowerPoint during this audit."
+  ]
+}
