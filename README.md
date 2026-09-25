@@ -6,7 +6,7 @@ Le [cahier des charges](PRD.md) définit le périmètre. La série officielle BC
 
 ## État des preuves
 
-La réponse BCE et les tables publiques TheLook ont été interrogées réellement le 16 septembre 2026. PostgreSQL 17.11 local a exécuté l’import et la requête C2 : **25 taux** entre le 27 décembre 2023 et le 31 janvier 2024, avec extrait et plan `EXPLAIN ANALYZE`. BigQuery, avec le projet dédié `ljnoam-retail-quality-2026`, a vérifié les schémas et extrait **2 131 lignes de commande** du 1er au 31 janvier 2024 ; le job, ses volumes et les *dry runs* sont dans `evidence/`. Les CSV figés sans identifiant personnel sont dans `data/frozen/`. Le pipeline C3 exécuté sur ces snapshots a produit **1 167 lignes acceptées**, **0 rejetée**, **450 à vérifier** et **514 exclues par règle métier**, avec conservation exacte des 2 131 lignes. Les montants EUR sont conditionnels à l’hypothèse non vérifiée que les prix TheLook sont en USD.
+La réponse BCE et les tables publiques TheLook ont été interrogées réellement le 16 septembre 2026. PostgreSQL 17.11 local a exécuté l’import et la requête C2 : **25 taux** entre le 27 décembre 2023 et le 31 janvier 2024, avec extrait et plan `EXPLAIN ANALYZE`. BigQuery a vérifié les schémas et extrait **2 131 lignes de commande** du 1er au 31 janvier 2024 ; le job, ses volumes et les *dry runs* sont dans `evidence/`. Les CSV figés sans identifiant personnel sont dans `data/frozen/`. Le pipeline C3 exécuté sur ces snapshots a produit **1 167 lignes acceptées**, **0 rejetée**, **450 à vérifier** et **514 exclues par règle métier**, avec conservation exacte des 2 131 lignes. Les montants EUR sont conditionnels à l’hypothèse non vérifiée que les prix TheLook sont en USD.
 
 ## Reproduction C2
 
@@ -28,7 +28,7 @@ curl -L --fail -o data/raw/ecb_2023-12-25_2024-01-31.csv 'https://data-api.ecb.e
 La partie BigQuery exige `gcloud auth application-default login`, un `GOOGLE_CLOUD_PROJECT` correspondant à un projet autorisé, et la localisation `US` du jeu public :
 
 ```sh
-export GOOGLE_CLOUD_PROJECT=ljnoam-retail-quality-2026
+export GOOGLE_CLOUD_PROJECT=your-authorized-gcp-project-id
 export BIGQUERY_LOCATION=US
 .venv/bin/python src/extract_bigquery.py discover
 .venv/bin/python src/extract_bigquery.py compare
@@ -54,11 +54,11 @@ Le livrable principal est [ventes_fiables.csv](output/ventes_fiables.csv). [quar
 
 Les anomalies artificielles sont uniquement dans `tests/fixtures/` et dans les tests de règles. Pour les exécuter comme démonstration séparée, utiliser `--sales tests/fixtures/sales_artificial.csv --rates tests/fixtures/rates_artificial.csv --output-dir /tmp/retail-quality-fixtures --fixture-mode` ; le rapport porte alors `fixtures_applied=true` et ne remplace jamais les résultats réels du dépôt. La CI [quality.yml](.github/workflows/quality.yml) lance les tests sur Python 3.13 et 3.14, reconstruit les sorties et vérifie qu’elles restent identiques aux fichiers versionnés.
 
-Les choix de colonnes, filtres, conditions et jointures sont expliqués dans [les fiches SQL](docs/requetes-sql.md). L’ordre du pipeline et chaque décision sont dans [les règles C3](docs/algorithme-et-regles-qualite.md). Les hypothèses figurent dans [les sources](docs/sources-et-hypotheses.md), les chiffres observés et limites dans [les résultats](docs/resultats-et-limites.md), et les mesures dans [les optimisations](docs/optimisations-et-mesures.md). La [matrice de preuves RNCP](docs/matrice-preuves-rncp.md) relie chaque critère à ses fichiers, ses preuves d’exécution et sa slide de soutenance.
+Les choix de colonnes, filtres, conditions et jointures sont expliqués dans [les fiches SQL](docs/requetes-sql.md). L’ordre du pipeline et chaque décision sont dans [les règles C3](docs/algorithme-et-regles-qualite.md). Les hypothèses figurent dans [les sources](docs/sources-et-hypotheses.md), les chiffres observés et limites dans [les résultats](docs/resultats-et-limites.md), et les mesures dans [les optimisations](docs/optimisations-et-mesures.md). La [matrice de preuves RNCP](docs/matrice-preuves-rncp.md) relie les critères aux fichiers et aux preuves d’exécution.
 
-## Audit RNCP et soutenance
+## Vérification
 
-L’audit daté du 16 septembre 2026 a reconstruit le pipeline, exécuté le vérificateur indépendant et relancé les 34 tests. Son relevé se trouve dans [rncp_audit_2026-09-16.json](evidence/rapport_de_tests/rncp_audit_2026-09-16.json). Le [PowerPoint final corrigé](presentation/retail-quality-soutenance-rncp-c2-c3-corrige.pptx) contient 12 slides, des tableaux et graphiques éditables, ainsi que des notes d’oral sur chaque slide. Le [support oral détaillé](docs/support-oral-soutenance.md) fournit le discours, les compétences et les extraits de code concrets pour chaque slide. La preuve de validation et de revue visuelle figure dans [presentation_validation_2026-09-16.json](evidence/rapport_de_tests/presentation_validation_2026-09-16.json).
+L’audit de l’implémentation daté du 16 septembre 2026 se trouve dans [rncp_audit_2026-09-16.json](evidence/rapport_de_tests/rncp_audit_2026-09-16.json). Les sorties sont aussi vérifiées de façon indépendante dans [c3_output_verification.json](evidence/rapport_de_tests/c3_output_verification.json), avec le compte rendu des tests dans `evidence/rapport_de_tests/c3_unittest.txt`.
 
 ## Sources
 

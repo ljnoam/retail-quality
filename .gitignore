@@ -7,5 +7,10 @@ data/raw/
 *.log
 /.build/
 /.codex-finalizer/
-/presentation/node_modules/
+node_modules/
 /.chart-data-*/
+.DS_Store
+**/.DS_Store
+/presentation/
+/docs/support-oral-soutenance.md
+/evidence/rapport_de_tests/presentation_validation_*.json
